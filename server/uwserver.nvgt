@@ -348,8 +348,11 @@ void netloop() {
 	ntmsloop();
 	weaponloop();
 	if (ais.length() > 0) {
-		for (uint i = 0; i < ais.length(); i++)
-			ais[i].loop(i);
+		for (int i = ais.length() - 1; i >= 0; i--) {
+			if (@ais[i] != null) {
+				ais[i].loop(i);
+			}
+		}
 	}
 	if (houses.length() > 0) {
 		for (uint i = 0; i < houses.length(); i++)
