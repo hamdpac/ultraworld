@@ -1928,6 +1928,12 @@ void netloop() {
 						send_reliable(peer_id, "drawsoundseditline " + s, 0);
 				} else if (parsed[0] == "builddrawsoundsremovelinetext" and parsed.length() > 1)
 					send_reliable(peer_id, "drawsoundsremoveline " + string_replace(get_event_message(), parsed[0] + " ", "", true), 0);
+				else if (parsed[0] == "builditemusagelimiteditlinetext" and parsed.length() >= 1) {
+					string s = input("Edit", "When done, press enter", string_replace(get_event_message(), parsed[0] + " ", "", true));
+					if (s != "" and !is_eloquence_crash_word(s) and get_sequence(s, true) <= 3)
+						send_reliable(peer_id, "itemusagelimiteditline " + s, 0);
+				} else if (parsed[0] == "builditemusagelimitremovelinetext" and parsed.length() > 1)
+					send_reliable(peer_id, "itemusagelimitremoveline " + string_replace(get_event_message(), parsed[0] + " ", "", true), 0);
 				else if (parsed[0] == "buildfadeditlinetext" and parsed.length() >= 1) {
 					string s = input("Edit", "When done, press enter", string_replace(get_event_message(), parsed[0] + " ", "", true));
 					if (s != "" and !is_eloquence_crash_word(s) and get_sequence(s, true) <= 3)
